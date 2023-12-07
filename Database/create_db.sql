@@ -1,18 +1,13 @@
 
-DO $$ 
-BEGIN
     IF EXISTS (SELECT FROM pg_database WHERE datname = 'poo_2023_02') THEN
         EXECUTE 'DROP DATABASE poo_2023_02';
-    END IF;
-END $$;
 
 
-DO $$ 
-BEGIN
+
+
     IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'poo_2023_02') THEN
         EXECUTE 'CREATE DATABASE poo_2023_02';
-    END IF;
-END $$;
+    
 
 
 \c poo_2023_02;
