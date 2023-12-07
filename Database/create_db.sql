@@ -13,8 +13,13 @@
 \c poo_2023_02;
 
 
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+ DROP TABLE IF EXISTS advogado;
+DROP TABLE IF EXISTS pessoa_juridica;
+DROP TABLE IF EXISTS pessoa_fisica;
+DROP TABLE IF EXISTS pessoa;
 
 CREATE TABLE pessoa (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
