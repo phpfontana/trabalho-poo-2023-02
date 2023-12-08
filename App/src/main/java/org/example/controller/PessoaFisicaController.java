@@ -44,10 +44,11 @@ public class PessoaFisicaController {
         System.out.print("ID: ");
         UUID id = UUID.fromString(scanner.nextLine());
         System.out.print("RG: ");
-        String cpf = scanner.nextLine();
+        String rg = scanner.nextLine();
 
 
-        PessoaFisica pessoaFisica = new PessoaFisica(id, id, cpf);
+
+        PessoaFisica pessoaFisica = new PessoaFisica(id, rg);
         pessoaFisicaDao.insert(pessoaFisica);
         System.out.println("Pessoa Física cadastrada com sucesso!");
     }
@@ -56,7 +57,7 @@ public class PessoaFisicaController {
         System.out.print("Digite o ID da Pessoa Física: ");
         UUID id = UUID.fromString(scanner.nextLine());
         pessoaFisicaDao.selectById(id).ifPresentOrElse(
-                pessoaFisica -> System.out.println("Pessoa Física: " + pessoaFisica.getId() + " - " + pessoaFisica.getNome() + " - " + pessoaFisica.getCpf()),
+                pessoaFisica -> System.out.println("Pessoa Física: " + pessoaFisica.getId() + " - " + pessoaFisica.getRg()),
                 () -> System.out.println("Pessoa Física não encontrada.")
         );
     }
@@ -64,7 +65,7 @@ public class PessoaFisicaController {
     private static void listarPessoasFisicas(PessoaFisicaDaoImplement pessoaFisicaDao) {
         System.out.println("Todas as Pessoas Físicas:");
         for (PessoaFisica pessoaFisica : pessoaFisicaDao.selectAll()) {
-            System.out.println(pessoaFisica.getId() + " - " + pessoaFisica.getNome() + " - " + pessoaFisica.getCpf());
+            System.out.println(pessoaFisica.getId()  + " - " + pessoaFisica.getRg());
         }
     }
 }
