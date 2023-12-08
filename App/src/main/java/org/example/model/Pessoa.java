@@ -8,8 +8,14 @@ import java.util.UUID;
 public class Pessoa {
     @Column(name = "id")
     private UUID id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "cpf_cnpj")
     private String cpfCnpj;
+
+    @Column(name = "tipo")
     private char tipo;
 
     public UUID getId() {
