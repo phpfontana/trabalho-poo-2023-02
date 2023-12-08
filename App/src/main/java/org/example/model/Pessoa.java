@@ -18,6 +18,16 @@ public class Pessoa {
     @Column(name = "tipo")
     private char tipo;
 
+    public Pessoa() {
+    }
+
+    public Pessoa(UUID id, String nome, String cpfCnpj, char tipo) {
+        this.id = id;
+        this.nome = nome;
+        this.cpfCnpj = cpfCnpj;
+        this.tipo = tipo;
+    }
+
     public UUID getId() {
         return id;
     }

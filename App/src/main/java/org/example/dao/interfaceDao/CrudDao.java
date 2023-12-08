@@ -6,9 +6,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CrudDao<T> {
-    void insert(T entity);
+    void insert(T entity) throws IllegalAccessException;
     Optional<T> selectById(UUID id);
     List<T> selectAll();
     boolean deleteById(UUID id);
-    boolean updateById(UUID id, T entity);
+    boolean updateById(UUID id, T entity) throws IllegalAccessException;
 }
