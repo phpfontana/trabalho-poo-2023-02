@@ -20,9 +20,7 @@ CREATE TABLE pessoa (
 -- Tabela PessoaFisica
 CREATE TABLE pessoa_fisica (
     id UUID PRIMARY KEY REFERENCES pessoa(id),
-    data_nascimento DATE,
     rg VARCHAR(20),
-    sexo VARCHAR(1)
 );
 
 -- Tabela PessoaJuridica

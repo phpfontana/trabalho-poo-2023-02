@@ -42,12 +42,14 @@ public class PessoaJuridicaController {
     }
 
     private static void cadastrarPessoaJuridica(Scanner scanner, PessoaJuridicaDaoImplement pessoaJuridicaDao) throws IllegalAccessException {
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
-        System.out.print("CNPJ: ");
-        String cnpj = scanner.nextLine();
+        System.out.print("Razão Social: ");
+        String razao_social = scanner.nextLine();
+        System.out.print("Nome Fantasia: ");
+        String nome_fantasia = scanner.nextLine();
+        System.out.print("Inscrição Estadual: ");
+        String inscricao_estadual = scanner.nextLine();
 
-        PessoaJuridica pessoaJuridica = new PessoaJuridica(UUID.randomUUID(), nome, cnpj);
+        PessoaJuridica pessoaJuridica = new PessoaJuridica(UUID.randomUUID(), razao_social, nome_fantasia, inscricao_estadual);
         pessoaJuridicaDao.insert(pessoaJuridica);
         System.out.println("Pessoa Jurídica cadastrada com sucesso!");
     }
@@ -56,7 +58,7 @@ public class PessoaJuridicaController {
         System.out.print("Digite o ID da Pessoa Jurídica: ");
         UUID id = UUID.fromString(scanner.nextLine());
         pessoaJuridicaDao.selectById(id).ifPresentOrElse(
-                pessoaJuridica -> System.out.println("Pessoa Jurídica: " + pessoaJuridica.getId() + " - " + pessoaJuridica.getNome() + " - " + pessoaJuridica.getCnpj()),
+                pessoaJuridica -> System.out.println("Pessoa Jurídica: " + pessoaJuridica.getId() + " - " + pessoaJuridica.getRazaoSocial() + " - " + pessoaJuridica.getNomeFantasia()+ " - " + pessoaJuridica.getInscricaoEstadual()),
                 () -> System.out.println("Pessoa Jurídica não encontrada.")
         );
     }
@@ -64,7 +66,7 @@ public class PessoaJuridicaController {
     private static void listarPessoasJuridicas(PessoaJuridicaDaoImplement pessoaJuridicaDao) {
         System.out.println("Todas as Pessoas Jurídicas:");
         for (PessoaJuridica pessoaJuridica : pessoaJuridicaDao.selectAll()) {
-            System.out.println(pessoaJuridica.getId() + " - " + pessoaJuridica.getNome() + " - " + pessoaJuridica.getCnpj());
+            System.out.println(pessoaJuridica.getId() + " - " + pessoaJuridica.getRazaoSocial() + " - " + pessoaJuridica.getNomeFantasia()+ " - " + pessoaJuridica.getInscricaoEstadual());
         }
     }
 }
