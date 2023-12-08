@@ -16,12 +16,12 @@ public class Pessoa {
     private String cpfCnpj;
 
     @Column(name = "tipo")
-    private char tipo;
+    private String tipo;
 
     public Pessoa() {
     }
 
-    public Pessoa(UUID id, String nome, String cpfCnpj, char tipo) {
+    public Pessoa(UUID id, String nome, String cpfCnpj, String tipo) {
         this.id = id;
         this.nome = nome;
         this.cpfCnpj = cpfCnpj;
@@ -52,11 +52,11 @@ public class Pessoa {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public char getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(char tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
     // Constructors, getters, and setters

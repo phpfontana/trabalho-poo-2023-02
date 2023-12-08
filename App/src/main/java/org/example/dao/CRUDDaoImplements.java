@@ -13,9 +13,9 @@ import java.util.UUID;
 
 public abstract class CRUDDaoImplements<T> implements CrudDao<T> {
     private final Class<T> type;
-    private final String url = "jdbc:postgresql://yourhost:port/yourdb";
-    private final String user = "yourusername";
-    private final String password = "yourpassword";
+    private final String url = "jdbc:postgresql://localhost:5432/poo_2023_02";
+    private final String user = "postgres";
+    private final String password = "123456";
 
     protected CRUDDaoImplements(Class<T> type) {
         this.type = type;

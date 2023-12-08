@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.dao.PessoasDaoImplement;
 import org.example.dao.interfaceDao.PessoaDao;
+import org.example.enumModel.TipoPessoa;
 import org.example.model.Pessoa;
 
 import java.util.UUID;
@@ -11,7 +12,7 @@ public class Main {
         PessoasDaoImplement pessoaDao = new PessoasDaoImplement();
 
         // Inserting a Pessoa
-        Pessoa pessoa = new Pessoa(UUID.randomUUID(), "John Doe", "12345678912", 'f');
+        Pessoa pessoa = new Pessoa(UUID.randomUUID(), "John Doe", "12345678912", TipoPessoa.PESSOAJURIDICA.getValue());
         pessoaDao.insert(pessoa);
 
         // Selecting all Pessoas
@@ -22,7 +23,7 @@ public class Main {
 
         // Updating a Pessoa by ID
         UUID idToUpdate = pessoa.getId();
-        Pessoa pessoaToUpdate = new Pessoa(idToUpdate, "Updated Name", "12345678912", 'm');
+        Pessoa pessoaToUpdate = new Pessoa(idToUpdate, "Updated Name", "12345678912", TipoPessoa.PESSOAFISICA.getValue());
         pessoaDao.updateById(idToUpdate, pessoaToUpdate);
 
         // Selecting a Pessoa by ID
