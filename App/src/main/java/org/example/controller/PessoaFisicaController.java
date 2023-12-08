@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dao.PessoaFisicaDaoImplement;
+import org.example.dao.PessoaJuridicaDaoImplement;
 import org.example.model.PessoaFisica;
 
 import java.util.Scanner;
@@ -17,7 +18,8 @@ public class PessoaFisicaController {
             System.out.println("1. Cadastrar Pessoa Física");
             System.out.println("2. Consultar Pessoa Física por ID");
             System.out.println("3. Listar todas as Pessoas Físicas");
-            System.out.println("4. Sair");
+            System.out.println("4. Deletar Pessoas Jurídicas por id");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -32,12 +34,21 @@ public class PessoaFisicaController {
                     listarPessoasFisicas(pessoaFisicaDao);
                     break;
                 case 4:
+                    deletarPessoaFisica(scanner, pessoaFisicaDao);
+                case 5:
                     System.out.println("Saindo...");
                     return;
                 default:
                     System.out.println("Opção inválida.");
             }
         }
+    }
+    public static void deletarPessoaFisica(Scanner scanner, PessoaFisicaDaoImplement pessoaFisicaDao){
+        System.out.print("ID: ");
+        UUID id = UUID.fromString(scanner.nextLine());
+
+        pessoaFisicaDao.deleteById(id);
+        System.out.println("Advogado deletado com sucesso!");
     }
 
     private static void cadastrarPessoaFisica(Scanner scanner, PessoaFisicaDaoImplement pessoaFisicaDao) throws IllegalAccessException {

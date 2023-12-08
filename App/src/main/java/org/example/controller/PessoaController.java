@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.dao.PessoaFisicaDaoImplement;
 import org.example.dao.PessoasDaoImplement;
 import org.example.enumModel.TipoPessoa;
 import org.example.model.Pessoa;
@@ -18,7 +19,8 @@ public class PessoaController {
         System.out.println("1. Cadastrar Pessoa");
         System.out.println("2. Consultar Pessoa por ID");
         System.out.println("3. Listar todas as Pessoas");
-        System.out.println("4. Sair");
+        System.out.println("4. Deletar Pessoas Jurídicas por id");
+        System.out.println("5. Sair");
         System.out.print("Escolha uma opção: ");
         int choice = Integer.parseInt(scanner.nextLine());
 
@@ -33,6 +35,9 @@ public class PessoaController {
                 listarPessoas(pessoaDao);
                 break;
             case 4:
+                deletarPessoa(scanner, pessoaDao);
+                break;
+            case 5:
                 System.out.println("Saindo...");
                 return;
             default:
@@ -41,6 +46,13 @@ public class PessoaController {
     }
 }
 
+    public static void deletarPessoa(Scanner scanner, PessoasDaoImplement pessoaDao){
+        System.out.print("ID: ");
+        UUID id = UUID.fromString(scanner.nextLine());
+
+        pessoaDao.deleteById(id);
+        System.out.println("Pessoa deletada com sucesso!");
+    }
     private static void cadastrarPessoa(Scanner scanner, PessoasDaoImplement pessoaDao) throws IllegalAccessException {
         System.out.print("Nome: ");
         String nome = scanner.nextLine(); // Lê o nome composto completo

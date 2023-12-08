@@ -18,7 +18,8 @@ public class AdvogadoController {
             System.out.println("1. Cadastrar Advogado");
             System.out.println("2. Consultar Advogado por ID");
             System.out.println("3. Listar todos os Advogados");
-            System.out.println("4. Sair");
+            System.out.println("4. Deletar Advogado por id");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -33,6 +34,8 @@ public class AdvogadoController {
                     listarAdvogados(advogadoDao);
                     break;
                 case 4:
+                    deletarAdvogado(scanner,advogadoDao);
+                case 5:
                     System.out.println("Saindo...");
                     return;
                 default:
@@ -40,15 +43,24 @@ public class AdvogadoController {
             }
         }
     }
+    public static void deletarAdvogado(Scanner scanner, AdvogadoDaoImplement advogadoDao){
+        System.out.print("ID: ");
+        UUID id = UUID.fromString(scanner.nextLine());
+
+        advogadoDao.deleteById(id);
+        System.out.println("Advogado deletada com sucesso!");
+    }
 
     private static void cadastrarAdvogado(Scanner scanner, AdvogadoDaoImplement advogadoDao) throws IllegalAccessException {
+        System.out.print("ID: ");
+        UUID id = UUID.fromString(scanner.nextLine());
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         System.out.print("Número da OAB: ");
         String numeroOAB = scanner.nextLine();
         // Pode adicionar outros campos específicos do Advogado aqui
 
-        Advogado advogado = new Advogado(UUID.randomUUID(), nome, numeroOAB);
+        Advogado advogado = new Advogado(UUID.randomUUID(), numeroOAB, nome);
         advogadoDao.insert(advogado);
         System.out.println("Advogado cadastrado com sucesso!");
     }
