@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.controller.AdvogadoController;
+import org.example.controller.PessoaController;
 import org.example.controller.PessoaFisicaController;
 import org.example.controller.PessoaJuridicaController;
 import org.example.dao.PessoasDaoImplement;
@@ -20,7 +21,8 @@ public class Main {
             System.out.println("1. Advogados");
             System.out.println("2. Pessoas Físicas");
             System.out.println("3. Pessoas Jurídicas");
-            System.out.println("4. Sair");
+            System.out.println("4. Pessoa");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -35,6 +37,9 @@ public class Main {
                     PessoaJuridicaController.getPessoaJuridicaController();
                     break;
                 case 4:
+                    PessoaController.getPessoaControler();
+                    break;
+                case 5:
                     System.out.println("Saindo...");
                     return;
                 default:

@@ -7,7 +7,7 @@ import org.example.model.Pessoa;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class pessoaController {
+public class PessoaController {
 
     public static void getPessoaControler() throws IllegalAccessException {
     PessoasDaoImplement pessoaDao = new PessoasDaoImplement();
